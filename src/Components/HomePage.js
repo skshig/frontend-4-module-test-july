@@ -25,10 +25,11 @@ const HomePage = () => {
     return (
         <div className="container">
             <h1>Social Media for Travellers</h1>
-            <input type="text" placeholder="serach..." style={{width:"100%", height:"1.5rem"}}/>
+            <input type="text" placeholder="serach..." style={{width:"98%", height:"1.5rem"}}/>
             <div className="mainDiv">
             {
-                posts && posts.map((post) => {
+                posts && posts.slice(0,6).map((post) => {
+
                     return (
                         <div className="items" key={post.id} onClick={() => {
                             handleCardDetails(post)
@@ -38,8 +39,8 @@ const HomePage = () => {
                                 <p>userId: {post.userId}</p>
                                 <p>title: {post.title.slice(0, 10)}</p>
                                 <p>body: {post.body.slice(0, 50)}</p>
-                                <p>Read More...</p>
-                                {/* <p>{post.body.charAt(0).toUpperCase()+post.body.slice(1,50)}<Link to={`/post`} className="read-more" onClick={()=>{localStorage.setItem("item",JSON.stringify(post))}}>Read More...</Link></p> */}
+                                {/* <p>Read More...</p> */}
+                                <p>{post.body.charAt(0).toUpperCase()+post.body.slice(1,50)}<Link to={`/post`} className="read-more" onClick={()=>{localStorage.setItem("item",JSON.stringify(post))}}>Read More...</Link></p>
                             </div>
                         </div>
                     )

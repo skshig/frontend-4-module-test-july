@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../redux/actions/apiActions";
 import { useNavigate } from "react-router-dom";
 import { addToDetails } from "../redux/actions/detailsActions";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const { loading, posts, error } = useSelector(state => state.posts);
@@ -22,7 +23,7 @@ const HomePage = () => {
     if (error) return <h1>{error}</h1>
 
     return (
-        <div >
+        <div className="container">
             <h1>Social Media for Travellers</h1>
             <input type="text" placeholder="serach..." style={{width:"100%", height:"1.5rem"}}/>
             <div className="mainDiv">
@@ -38,6 +39,7 @@ const HomePage = () => {
                                 <p>title: {post.title.slice(0, 10)}</p>
                                 <p>body: {post.body.slice(0, 50)}</p>
                                 <p>Read More...</p>
+                                {/* <p>{post.body.charAt(0).toUpperCase()+post.body.slice(1,50)}<Link to={`/post`} className="read-more" onClick={()=>{localStorage.setItem("item",JSON.stringify(post))}}>Read More...</Link></p> */}
                             </div>
                         </div>
                     )
